@@ -68,8 +68,8 @@ class Matrix16x8(HT16K33Matrix):
     FB_BPP = 1
 
     def _copy_buf(self):
-        for y in range(8):
-            self.buffer[y * 2] = self._fb_buffer[y]
+        for y in range(16):
+            self.buffer[y] = self._fb_buffer[y]
 
 class Matrix8x8(HT16K33Matrix):
     WIDTH = 8
@@ -79,8 +79,7 @@ class Matrix8x8(HT16K33Matrix):
 
     def _copy_buf(self):
         for y in range(8):
-            b = self._fb_buffer[y]
-            self.buffer[y * 2] = (b >> 1) | (b << 7)
+            self.buffer[y * 2] = self._fb_buffer[y]
 
 
 class Matrix8x8x2(HT16K33Matrix):
